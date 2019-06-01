@@ -10,20 +10,28 @@
     {{-- [Favicon] --}}
     
     {{-- [CSS] --}}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-4.3.1/bootstrap.min.css') }}">
     {{-- [CSS] --}}
 
     <title>@yield('title')</title>
 </head>
 <body>
-    @section('container')
+    <div class="container">
+        @section('container')
         
-    @show
+        @show    
+
+        <div class="row text-center copyrights">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">&copy; LinearChat 2019</div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
     
     {{-- [JS] --}}
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/jquery-1.10.0.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap-4.3.1/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/vue.min.js') }}"></script>
         <script src="{{ asset('js/main.js') }}"></script>
     {{-- [JS] --}}

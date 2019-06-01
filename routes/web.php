@@ -13,4 +13,8 @@
 
 Route::get('/', function () {
     return view('index', ['title' => 'LinearChat']);
-});
+})->name('index');
+
+Route::get('/about', function () {
+    return view('index', ['title' => 'LinearChat']);
+})->name('about');

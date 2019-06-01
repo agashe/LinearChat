@@ -10,3 +10,52 @@ body {
     background-image: url('../image/background.gif');
 }
 /* Global */
+
+/* White Box */
+.white-box {
+    margin-top: 200px;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+/* White Box */
+
+/* Hint */
+#hint {
+    font-size: 16px;
+    font-family: tahoma;
+    font-weight: bold;
+}
+/* Hint */
+
+/* Copyrights */
+.copyrights {
+    width: 100%;
+    font-size: 16px;
+    font-family: tahoma;
+    font-weight: bold;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+/* Copyrights */
+
+/* Button */
+.btn {
+    height: 35px;
+    width: 200px;
+    font-size: 16px;
+    font-family: tahoma;
+    font-weight: bold;
+    text-align: center;
+    color: #f9f9f9;
+    background-color: #969696;
+    border: 2px solid #f9f9f9;
+    border-radius: 20px;
+}
+.btn:hover {
+    color: #969696;
+    background-color: #f9f9f9;
+    border-color: #969696;
+}
+/* Button */
