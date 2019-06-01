@@ -1,0 +1,12 @@
+/* Reset Elements */
+* {
+    margin: 0;
+    padding: 0;
+}
+/* Reset Elements */
+
+/* Global */
+body {
+    background-image: url('../image/background.gif');
+}
+/* Global */
