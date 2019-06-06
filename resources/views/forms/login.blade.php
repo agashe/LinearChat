@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="row">
-                    <a href="{{ route('index') }}">Don't have account</a>
+                    <a href="{{ route('register') }}">Don't have account</a>
                     <br>
                     <a href="{{ route('index') }}">Forget your password</a>
                     <br><br>

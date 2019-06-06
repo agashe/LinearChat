@@ -23,8 +23,10 @@ Route::get('/about', function () {
 
 /* User */
 Route::get('/register', function () {
-    return view('forms.login', ['title' => 'Register | LinearChat']);
+    return view('forms.register', ['title' => 'Register | LinearChat']);
 })->name('register');
+
+Route::post('/store_user', 'UserController@register')->name('store_user');
 
 Route::get('/login', function () {
     return view('forms.login', ['title' => 'Log In | LinearChat']);
