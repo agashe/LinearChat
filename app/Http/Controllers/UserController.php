@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Validator;
 
 class UserController extends Controller
 {
@@ -21,12 +22,19 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:5|confirmed',
         ]);
+        
+        if ($request->name == $request->password || $request->email == $request->password 
+            || substr($request->email, 0, strpos($request->email, '@')) == $request->password) {
+            $validator = Validator::make([], []);
+            $validator->getMessageBag()->add('password', 'Your name/email can\'t be your password');
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
     
         $new_user = new User;
 
         $new_user->name = $request->name;
         $new_user->email = $request->email;
-        $new_user->password = bcrypt($request->name);
+        $new_user->password = bcrypt($request->password);
         $new_user->image = 'avatar.jpg';
         $new_user->bio = '';
 
