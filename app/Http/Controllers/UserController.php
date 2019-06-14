@@ -35,8 +35,6 @@ class UserController extends Controller
         $new_user->name = $request->name;
         $new_user->email = $request->email;
         $new_user->password = bcrypt($request->password);
-        $new_user->image = 'avatar.jpg';
-        $new_user->bio = '';
 
         $new_user->save();
 
