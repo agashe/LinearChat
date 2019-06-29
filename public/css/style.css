@@ -20,6 +20,16 @@ body {
 }
 /* White Box */
 
+/* Grey Box */
+.grey-box {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #969696;
+    border: 2px solid #969696;
+    color: #f9f9f9;
+}
+/* Grey Box */
+
 /* Hint */
 #hint {
     font-size: 16px;
@@ -60,3 +70,7 @@ body {
     border-color: #969696;
 }
 /* Button */
+
+/* Close */
+#close {cursor: pointer;}
+/* Close */

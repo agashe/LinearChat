@@ -10,8 +10,20 @@
             <p id="hint">Sign In with your account to start chating</p>
 
             <br>
+            
+            @if ($errors->any())
+                <div class="alert alert-danger text-left" role="alert">
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach
+                </div>  
+            @endif
+            
+            <br>
 
-            <form method="post" action="">
+            <form method="post" action="{{ route('check_user') }}">
+                {{ csrf_field() }}
+
                 <div class="form-group">
                     <input type="email" name="email" class="form-control" id="InputEmail" placeholder="Enter Your Email">
                 </div>

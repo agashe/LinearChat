@@ -31,4 +31,12 @@ Route::post('/store_user', 'UserController@register')->name('store_user');
 Route::get('/login', function () {
     return view('forms.login', ['title' => 'Log In | LinearChat']);
 })->name('login');
+
+Route::post('/check_user', 'UserController@login')->name('check_user');
 /* User */
+
+/* Chat Board */
+Route::get('/chat', function () {
+    return view('chat', ['title' => 'Chat | LinearChat']);
+})->name('chat');
+/* Chat Board */

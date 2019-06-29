@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use Validator;
 
@@ -38,6 +39,22 @@ class UserController extends Controller
 
         $new_user->save();
 
-        return redirect()->route('index');
+        return redirect()->route('index')->with('success', 'Thank you for registeration, please check your email to confirm the account!');
+    }
+
+    public function login(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect()->route('chat');
+        } else {
+            $validator = Validator::make([], []);
+            $validator->getMessageBag()->add('email', 'Invalid Email or Password');
+            return redirect()->back()->withErrors($validator);
+        }
     }
 }

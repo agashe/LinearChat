@@ -13,4 +13,12 @@ $(document).ready(function(){
         else if (txt.length > 15)
             $('#pass-strength').text('STRONG').css('color', 'green').show();
     });
+
+
+    /**
+     * Close Alert
+     */
+    $('#close').click(function(){
+        $('#alert-msg').hide();
+    });
 });
