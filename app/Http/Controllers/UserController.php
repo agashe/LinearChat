@@ -57,4 +57,13 @@ class UserController extends Controller
             return redirect()->back()->withErrors($validator);
         }
     }
+
+    public function resetPassword(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email'
+        ]);
+
+        return redirect()->route('chat');
+    }
 }

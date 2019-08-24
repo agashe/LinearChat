@@ -34,7 +34,7 @@
                 <div class="row">
                     <a href="{{ route('register') }}">Don't have account</a>
                     <br>
-                    <a href="{{ route('index') }}">Forget your password</a>
+                    <a href="{{ route('forget_password') }}">Forget your password</a>
                     <br><br>
                 </div>
                 

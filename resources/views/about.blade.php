@@ -23,7 +23,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{ route('index') }}" class="btn">OK, let me try</a>
+                    <a href="{{ route('login') }}" class="btn">OK, let me try</a>
                 </div>
             </div>
         </div>

@@ -33,10 +33,18 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::post('/check_user', 'UserController@login')->name('check_user');
+
+Route::get('/forget-password', function () {
+    return view('forms.forget_password', ['title' => 'Forget Password | LinearChat']);
+})->name('forget_password');
+
+Route::post('/reset_password', 'UserController@resetPassword')->name('reset_password');
 /* User */
 
 /* Chat Board */
-Route::get('/chat', function () {
-    return view('chat', ['title' => 'Chat | LinearChat']);
-})->name('chat');
+Route::middleware(['auth'])->group(function(){
+    Route::get('/chat', function () {
+        return view('chat', ['title' => 'Chat | LinearChat']);
+    })->name('chat');
+});
 /* Chat Board */
