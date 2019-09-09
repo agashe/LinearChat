@@ -25,7 +25,7 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        <a href="{{ route('login') }}" class="btn">Start Chating</a>
+                        <a href="{{ Auth::user()? route('chat') : route('login') }}" class="btn">Start Chating</a>
                     </div>
                     <div class="col-md-6">
                         <a href="{{ route('about') }}" class="btn">What is this?</a>

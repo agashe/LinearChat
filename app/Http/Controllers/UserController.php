@@ -5,17 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendNewPassword;
+use App\Mail\SendConfirmation;
 use App\User;
 use Validator;
 
 class UserController extends Controller
 {
-    /**
-     * Resgiter new user
-     * 
-     * @param Request $request
-     * @return Response
-     */
     public function register(Request $request)
     {
         $this->validate($request, [
@@ -31,15 +28,46 @@ class UserController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
     
-        $new_user = new User;
+        $newUser = new User;
 
-        $new_user->name = $request->name;
-        $new_user->email = $request->email;
-        $new_user->password = bcrypt($request->password);
+        $newUser->name = $request->name;
+        $newUser->email = $request->email;
+        $newUser->password = bcrypt($request->password);
+        
+        // Create confirmation code.
+        $newUser->confirmation_code = bcrypt(mt_rand(0, 100000));
+        
+        $newUser->save();
 
-        $new_user->save();
+        // Send confirmation mail.
+        Mail::to($newUser->email)->send(new SendConfirmation($newUser->id, $newUser->confirmation_code));
 
         return redirect()->route('index')->with('success', 'Thank you for registeration, please check your email to confirm the account!');
+    }
+
+    public function confirmUser($id, $code)
+    {
+        $user = User::find($id);
+
+        if (!$user->isConfirmed()) {
+            if (Auth::user()) {
+                if (Auth::user()->id == $user->id && $user->confirmation_code == $code) {
+                    $user->confirmed = 1;
+                    $user->save();
+
+                    return redirect()->route('chat')->with('success', 'Your account has been confirmed');
+                } 
+            } else {
+                if ($user->confirmation_code == $code) {
+                    $user->confirmed = 1;
+                    $user->save();
+
+                    return redirect()->route('index')->with('success', 'Your account has been confirmed');
+                }
+            }
+        } 
+
+        return redirect()->route('index');
     }
 
     public function login(Request $request)
@@ -63,7 +91,22 @@ class UserController extends Controller
         $this->validate($request, [
             'email' => 'required|email'
         ]);
+        
+        // ToDo: chaeck that the email is exsit in the DB.
 
-        return redirect()->route('chat');
+        // ToDo: create new password and save it into the DB.
+        $newPassword = bcrypt("test");
+
+        // Sned the new password.
+        Mail::to($request->email)->send(new SendNewPassword($newPassword));
+        
+        return redirect()->route('index')->with('success', 'Your Password has been reset , please check your mail !');
+    }
+
+    public function logout()
+    {
+        $userName = Auth::user()->name;
+        Auth::logout();
+        return redirect()->route('index')->with('success', "Good Bye $userName");
     }
 }
