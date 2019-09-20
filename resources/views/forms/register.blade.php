@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6 text-center white-box">
-            <h1>Register</h1>
+            <h1><span class="red">SIGN</span> <span class="blue">UP</span></h1>
             <p id="hint">Register new account</p>
 
             <br>

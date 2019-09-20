@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6 text-center white-box">
-            <h1>Forget Password</h1>
+            <h1><span class="red">FORGOT</span> <span class="blue">PASSWORD</span></h1>
             <p id="hint">Enter your Email , and you will recieve an email with a new password.</p>
 
             <br>

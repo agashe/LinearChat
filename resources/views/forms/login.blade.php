@@ -4,20 +4,9 @@
 
 @section('container')
     <div class="row">
-        @if (Session::has('success'))
-            <div class="text-center grey-box" id="alert-msg">
-                <p id="hint">
-                    {{ Session::get('success') }}
-                    
-                    <span id="close">&times;</span>
-                </p>
-                
-            </div>
-        @endif
-        
         <div class="col-md-3"></div>
         <div class="col-md-6 text-center white-box">
-            <h1>Log In</h1>
+            <h1><span class="red">LOG</span> <span class="blue">IN</span></h1>
             <p id="hint">Sign In with your account to start chating</p>
 
             <br>
@@ -43,9 +32,9 @@
                 </div>
 
                 <div class="row">
-                    <a href="{{ route('register') }}">Don't have account</a>
+                    <a href="{{ route('register') }}" class="hint blue">Don't have account</a>
                     <br>
-                    <a href="{{ route('forget_password') }}">Forget your password</a>
+                    <a href="{{ route('forget_password') }}" class="hint blue">Forget your password</a>
                     <br><br>
                 </div>
                 

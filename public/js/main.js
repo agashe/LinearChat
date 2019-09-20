@@ -18,7 +18,7 @@ $(document).ready(function(){
     /**
      * Close Alert
      */
-    $('#close').click(function(){
+    $('#alert-msg').click(function(){
         $('#alert-msg').hide();
     });
 });

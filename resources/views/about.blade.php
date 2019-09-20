@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8 text-center white-box">
-            <h1>What is this?</h1>
+            <h1><span class="red">ABOUT</span> <span class="blue">US</span></h1>
             <p id="hint">
                 Do you have some free time? want to try something new,
                 say what is in your heart without getting heart then

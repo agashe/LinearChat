@@ -7,49 +7,63 @@
 
 /* Global */
 body {
-    background-image: url('../image/background.gif');
+    background-color: #f5f5f5;
+    background-image: url('../image/background.png');
 }
+
+.logo {
+    font-family: Mangal;
+    font-size: 6em;
+    font-weight: bold;
+}
+
+.red {color: #EA1818;}
+.blue {color: #3C2EF1;}
 /* Global */
 
 /* White Box */
 .white-box {
     margin-top: 100px;
     padding: 15px;
-    background-color: #f9f9f9;
-    border: 2px solid #969696;
+    background-color: #f5f5f5;
+    border: 2px solid #3C2EF1;
+    border-radius: 10px;
+    box-shadow: 2px 2px #000;
 }
 /* White Box */
 
-/* Grey Box */
-.grey-box {
-    margin-top: 15px;
-    padding: 15px;
-    background-color: #969696;
-    border: 2px solid #969696;
-    color: #f9f9f9;
-}
-/* Grey Box */
-
 /* Hint */
-#hint {
+.hint {
+    padding-top: 5px;
     font-size: 16px;
     font-family: tahoma;
     font-weight: bold;
 }
 /* Hint */
 
-/* Copyrights */
-.copyrights {
+/* Footer & Copyrights */
+footer {
     width: 100%;
-    font-size: 16px;
-    font-family: tahoma;
-    font-weight: bold;
     text-align: center;
     position: fixed;
     left: 0;
     bottom: 0;
 }
-/* Copyrights */
+
+.copyrights {
+    padding: 5px;
+    font-size: 16px;
+    font-family: tahoma;
+    font-weight: bold;
+    text-align: center;
+    color: #3C2EF1;
+    background-color: #f5f5f5;
+    border: 2px solid #EA1818;
+    border-radius: 20px;
+    box-shadow: 2px 2px #000;
+    cursor: pointer;
+}
+/* Footer & Copyrights */
 
 /* Button */
 .btn {
@@ -59,18 +73,21 @@ body {
     font-family: tahoma;
     font-weight: bold;
     text-align: center;
-    color: #f9f9f9;
-    background-color: #969696;
-    border: 2px solid #f9f9f9;
+    color: #3C2EF1;
+    background-color: #f5f5f5;
+    border: 2px solid #3C2EF1;
     border-radius: 20px;
+    box-shadow: 2px 2px #000;
 }
 .btn:hover {
-    color: #969696;
-    background-color: #f9f9f9;
-    border-color: #969696;
+    color: #EA1818;
+    background-color: #f5f5f5;
+    border-color: #EA1818;
 }
 /* Button */
 
-/* Close */
-#close {cursor: pointer;}
-/* Close */
+/* Alert Message */
+#alert-msg {
+    cursor: pointer;
+}
+/* Alert Message */

@@ -23,8 +23,8 @@ Route::get('/about', function () {
 
 /* Unauthintecated User */
 Route::middleware(['notAuser'])->group(function(){
-    Route::get('/register', function () {
-        return view('forms.register', ['title' => 'Register | LinearChat']);
+    Route::get('/Sign-up', function () {
+        return view('forms.register', ['title' => 'Sign Up | LinearChat']);
     })->name('register');
 
     Route::post('/store_user', 'UserController@register')->name('store_user');

@@ -6,21 +6,13 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8 text-center">
-            @if (Session::has('success'))
-                <div class="text-center grey-box" id="alert-msg">
-                    <p id="hint">
-                        {{ Session::get('success') }}
-                        
-                        <span id="close">&times;</span>
-                    </p>
-                    
-                </div>
-            @endif
-            
             <div class="white-box">
-                <img src="{{ asset('image/logo.gif') }}" alt="Logo">
-                <p id="hint">The best solution to chat, just jungle in mongle :)</p>
+                <h1 class="logo">
+                    <span class="red">LINEAR</span><span class="blue">CHAT</span>
+                </h1>
 
+                <br>
+                <p id="hint">The best solution to chat, just jungle in mongle :)</p>
                 <br>
 
                 <div class="row">
