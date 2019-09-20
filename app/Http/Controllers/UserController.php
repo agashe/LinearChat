@@ -93,10 +93,16 @@ class UserController extends Controller
             'email' => 'required|email'
         ]);
         
-        // ToDo: chaeck that the email is exsit in the DB.
+        // Check that the email is exsit in the DB.
+        $user = User::where('email', '=', $request->email)->first();
+        if (!$user) {
+            return redirect()->route('index')->with('success', $user);
+        }
 
-        // ToDo: create new password and save it into the DB.
-        $newPassword = bcrypt("test");
+        // Create new password and save it into the DB.
+        $newPassword = mt_rand(0, 1000000);
+        $user->password = bcrypt($newPassword);
+        $user->save();
 
         // Sned the new password.
         Mail::to($request->email)->send(new SendNewPassword($newPassword));
