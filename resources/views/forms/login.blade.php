@@ -4,6 +4,17 @@
 
 @section('container')
     <div class="row">
+        @if (Session::has('success'))
+            <div class="text-center grey-box" id="alert-msg">
+                <p id="hint">
+                    {{ Session::get('success') }}
+                    
+                    <span id="close">&times;</span>
+                </p>
+                
+            </div>
+        @endif
+        
         <div class="col-md-3"></div>
         <div class="col-md-6 text-center white-box">
             <h1>Log In</h1>

@@ -46,7 +46,7 @@ Route::middleware(['notAuser'])->group(function(){
 /* Unauthintecated User */
 
 /* Authintecated User */
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth', 'isConfirmedUser'])->group(function(){
     Route::get('/chat', function () {
         return view('chat', ['title' => 'Chat | LinearChat']);
     })->name('chat');

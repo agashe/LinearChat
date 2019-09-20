@@ -35,8 +35,7 @@ class UserController extends Controller
         $newUser->password = bcrypt($request->password);
         
         // Create confirmation code.
-        $newUser->confirmation_code = bcrypt(mt_rand(0, 100000));
-        
+        $newUser->confirmation_code = str_replace('/', '0', bcrypt(mt_rand(0, 100000)));
         $newUser->save();
 
         // Send confirmation mail.
@@ -47,24 +46,13 @@ class UserController extends Controller
 
     public function confirmUser($id, $code)
     {
-        $user = User::find($id);
+        $user = User::find(intval($id));
 
-        if (!$user->isConfirmed()) {
-            if (Auth::user()) {
-                if (Auth::user()->id == $user->id && $user->confirmation_code == $code) {
-                    $user->confirmed = 1;
-                    $user->save();
+        if (!$user->isConfirmed() && $user->confirmation_code == $code) {
+                $user->confirmed = 1;
+                $user->save();
 
-                    return redirect()->route('chat')->with('success', 'Your account has been confirmed');
-                } 
-            } else {
-                if ($user->confirmation_code == $code) {
-                    $user->confirmed = 1;
-                    $user->save();
-
-                    return redirect()->route('index')->with('success', 'Your account has been confirmed');
-                }
-            }
+                return redirect()->route('login')->with('success', 'Your account has been confirmed!, please login');
         } 
 
         return redirect()->route('index');
@@ -78,7 +66,20 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('chat');
+            // Check that the user's account is confirmed.
+            if (Auth::user()->isConfirmed()) {
+                return redirect()->route('chat');
+            } else {
+                // Send a new confirmation code.
+                Auth::user()->confirmation_code = str_replace('/', '0', bcrypt(mt_rand(0, 100000)));
+                Auth::user()->save();
+                Mail::to(Auth::user()->email)->send(new SendConfirmation(Auth::user()->id, Auth::user()->confirmation_code));
+                
+                // logout the user until he account be confirmed.
+                Auth::logout();
+
+                return redirect()->route('index')->with('success', 'Your account is not confirmed , we have sent a new code please check your mail !');
+            }
         } else {
             $validator = Validator::make([], []);
             $validator->getMessageBag()->add('email', 'Invalid Email or Password');
