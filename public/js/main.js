@@ -21,4 +21,14 @@ $(document).ready(function(){
     $('#alert-msg').click(function(){
         $('#alert-msg').hide();
     });
+
+
+    /**
+     * Move the copyrights to left for the chat page.
+     */
+    if (window.location.href.includes('chat')) {
+        $('.copyrights').addClass('copyrights-left');
+    } else {
+        $('.copyrights').removeClass('copyrights-left');
+    }
 });

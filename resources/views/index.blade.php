@@ -12,7 +12,7 @@
                 </h1>
 
                 <br>
-                <p id="hint">The best solution to chat, just jungle in mongle :)</p>
+                <p class="hint">The best solution to chat, just jungle in mongle :)</p>
                 <br>
 
                 <div class="row">

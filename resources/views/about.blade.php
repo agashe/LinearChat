@@ -7,7 +7,7 @@
         <div class="col-md-2"></div>
         <div class="col-md-8 text-center white-box">
             <h1><span class="red">ABOUT</span> <span class="blue">US</span></h1>
-            <p id="hint">
+            <p class="hint">
                 Do you have some free time? want to try something new,
                 say what is in your heart without getting heart then
                 you should try LinearChat :)
