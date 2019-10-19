@@ -116,4 +116,35 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->route('index')->with('success', "Good Bye $userName");
     }
+
+    public function update(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:5|confirmed',
+        ]);
+        
+        if ($request->name == $request->password || $request->email == $request->password 
+            || substr($request->email, 0, strpos($request->email, '@')) == $request->password) {
+            $validator = Validator::make([], []);
+            $validator->getMessageBag()->add('password', 'Your name/email can\'t be your password');
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+    
+        $newUser = new User;
+
+        $newUser->name = $request->name;
+        $newUser->email = $request->email;
+        $newUser->password = bcrypt($request->password);
+        
+        // Create confirmation code.
+        $newUser->confirmation_code = str_replace('/', '0', bcrypt(mt_rand(0, 100000)));
+        $newUser->save();
+
+        // Send confirmation mail.
+        Mail::to($newUser->email)->send(new SendConfirmation($newUser->id, $newUser->confirmation_code));
+
+        return redirect()->route('index')->with('success', 'Thank you for registeration, please check your email to confirm the account!');
+    }
 }

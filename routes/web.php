@@ -51,6 +51,12 @@ Route::middleware(['auth', 'isConfirmedUser'])->group(function(){
         return view('chat', ['title' => 'Chat | LinearChat']);
     })->name('chat');
 
+    Route::get('/setting', function () {
+        return view('forms.edit_user', ['title' => 'Settings | LinearChat']);
+    })->name('edit_user');
+
+    Route::post('/update_user', 'UserController@update')->name('update_user');
+
     Route::get('/logout', 'UserController@logout')->name('logout');
 });
 /* Authintecated User */
