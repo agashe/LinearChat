@@ -57,6 +57,12 @@ Route::middleware(['auth', 'isConfirmedUser'])->group(function(){
 
     Route::post('/update_user', 'UserController@update')->name('update_user');
 
+    Route::get('/update-password', function () {
+        return view('forms.update_password', ['title' => 'Update Password | LinearChat']);
+    })->name('update_password');
+
+    Route::post('/save-password', 'UserController@updatePassword')->name('save_password');
+
     Route::get('/logout', 'UserController@logout')->name('logout');
 });
 /* Authintecated User */

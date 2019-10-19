@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 use App\Mail\SendNewPassword;
 use App\Mail\SendConfirmation;
 use App\User;
@@ -110,13 +111,6 @@ class UserController extends Controller
         return redirect()->route('index')->with('success', 'Your Password has been reset , please check your mail !');
     }
 
-    public function logout()
-    {
-        $userName = Auth::user()->name;
-        Auth::logout();
-        return redirect()->route('index')->with('success', "Good Bye $userName");
-    }
-
     public function update(Request $request)
     {
         $this->validate($request, [
@@ -146,5 +140,31 @@ class UserController extends Controller
         Mail::to($newUser->email)->send(new SendConfirmation($newUser->id, $newUser->confirmation_code));
 
         return redirect()->route('index')->with('success', 'Thank you for registeration, please check your email to confirm the account!');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $this->validate($request, [
+            'oldPassword' => 'required|min:5',
+            'password' => 'required|min:5|confirmed',
+        ]);
+        
+        if (!Hash::check($request->oldPassword, Auth::user()->password)) {
+            $validator = Validator::make([], []);
+            $validator->getMessageBag()->add('password', 'Your current password you entered, is invalid.');
+            return redirect()->back()->withErrors($validator);
+        }
+
+        Auth::user()->password = bcrypt($request->password);
+        Auth::user()->save();
+
+        return redirect()->route('edit_user')->with('success', 'Your password has been updated successfully.');
+    }
+
+    public function logout()
+    {
+        $userName = Auth::user()->name;
+        Auth::logout();
+        return redirect()->route('index')->with('success', "Good Bye $userName");
     }
 }

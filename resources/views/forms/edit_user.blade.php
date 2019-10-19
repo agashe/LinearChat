@@ -7,7 +7,6 @@
         <div class="col-md-3"></div>
         <div class="col-md-6 text-center white-box">
             <h1><span class="red">SETT</span><span class="blue">INGS</span></h1>
-            <p id="hint">Update Your profile.</p>
             
             @if ($errors->any())
                 <br>    
@@ -41,14 +40,6 @@
                     <input type="file" name="avatar" class="form-control" id="InputAvatar">
                 </div>
 
-                {{-- <div class="form-group text-left">
-                    <input type="password" name="password" class="form-control" id="InputPassword" placeholder="Enter Password">
-                    <span style="display:none;font-weight:bold;" id="pass-strength">Text</span>
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password_confirmation" class="form-control" id="InputConfirm" placeholder="Confirm">
-                </div> --}}
-
                 <br>
 
                 <div class="row">
@@ -56,7 +47,7 @@
                         <button type="submit" class="btn btn-sm" title="Save Changes">SAVE!</button>
                     </div>
                     <div class="col-md-4">
-                        <button type="submit" class="btn btn-sm" title="Update Your Password">PASSWORD</button>
+                        <a href="{{ route('update_password') }}" class="btn btn-sm" title="Update Your Password">PASSWORD</a>
                     </div>
                     <div class="col-md-4">
                         <a href="{{ route('chat') }}" class="btn btn-sm" title="Nothing, Thank you">CANCEL</a>
