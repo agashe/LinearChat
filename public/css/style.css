@@ -150,3 +150,9 @@ footer {
     cursor: pointer;
 }
 /* Alert Message */
+
+/* Error Message */
+.alert-danger ul {
+    list-style: none;
+}
+/* Error Message */

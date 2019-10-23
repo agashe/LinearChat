@@ -21,11 +21,13 @@
             
             <br>
             
-            <form method="post" action="{{ route('update_user') }}">
+            <form method="post" action="{{ route('update_user') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 
                 <div class="form-group">
-                    <img src="{{ asset('image/avatar.jpg') }}" class="settings-img" />
+                    <label for="InputAvatar">
+                        <img src="{{ url('storage/'.Auth::user()->image) }}" class="settings-img" />
+                    </label>
                 </div>
 
                 <div class="form-group">
