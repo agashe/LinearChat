@@ -16,6 +16,14 @@ $(document).ready(function(){
 
 
     /**
+     * Go to homepage
+     */
+    $('.copyrights').click(function(){
+        window.location.href = '/';
+    });
+
+
+    /**
      * Close Alert
      */
     $('#alert-msg').click(function(){
@@ -24,11 +32,13 @@ $(document).ready(function(){
 
 
     /**
-     * Move the copyrights to left for the chat page.
+     * Move the copyrights to left / alert-msg to right for the chat page.
      */
     if (window.location.href.includes('chat')) {
         $('.copyrights').addClass('copyrights-left');
+        $('#alert-msg').addClass('white-box-popup');
     } else {
         $('.copyrights').removeClass('copyrights-left');
+        $('#alert-msg').removeClass('white-box-popup');
     }
 });

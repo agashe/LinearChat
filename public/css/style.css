@@ -52,6 +52,13 @@ body {
 .white-box #InputAvatar {
     display: none;
 }
+
+.white-box-popup {
+    width: 350px;
+    margin: 15px;
+    position: fixed;
+    right: 0;
+}
 /* White Box */
 
 /* Hint */
@@ -81,12 +88,10 @@ body {
 footer {
     width: 100%;
     text-align: center;
-    position: fixed;
-    left: 0;
-    bottom: 0;
 }
 
 .copyrights {
+    margin-top: 20px;
     padding: 5px;
     font-size: 16px;
     font-family: tahoma;
@@ -98,6 +103,10 @@ footer {
     border-radius: 20px;
     box-shadow: 2px 2px #000;
     cursor: pointer;
+}
+.copyrights:hover {
+    color: #EA1818;
+    border-color: #3C2EF1;
 }
 
 .copyrights-left {
@@ -124,7 +133,6 @@ footer {
 }
 .btn:hover {
     color: #EA1818;
-    background-color: #f5f5f5;
     border-color: #EA1818;
 }
 

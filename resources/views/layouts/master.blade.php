@@ -33,12 +33,12 @@
         
         @show    
 
-        <footer>
-            <div class="col-md-5"></div>
-            <div class="col-md-2">
+        <footer class="row text-center">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 text-center">
                 <p class="copyrights">&copy; LinearChat {{ date('Y') }}</p>
             </div>
-            <div class="col-md-5"></div>
+            <div class="col-md-4"></div>
         </footer>
     </div>
     

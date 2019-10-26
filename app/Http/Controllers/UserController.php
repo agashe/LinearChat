@@ -120,7 +120,11 @@ class UserController extends Controller
         $user = Auth::user();
         $user->name = $request->name;
         $user->bio = $request->bio;
-        $user->image = $request->file('avatar')->store('avatar', ['disk' => 'public']);
+
+        if ($request->file('avatar')) {
+            $user->image = $request->file('avatar')->store('avatar', ['disk' => 'public']);
+        }
+        
         $user->save();
 
         return redirect()->route('chat')->with('success', 'Your Account has been updated successfully!');
