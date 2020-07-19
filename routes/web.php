@@ -22,8 +22,8 @@ Route::get('/about', function () {
 /* Public */
 
 /* Unauthintecated User */
-Route::middleware(['notAuser'])->group(function(){
-    Route::get('/Sign-up', function () {
+Route::middleware(['guest'])->group(function(){
+    Route::get('/sign-up', function () {
         return view('forms.register', ['title' => 'Sign Up | LinearChat']);
     })->name('register');
 
