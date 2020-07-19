@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use App\Events\JoinChat;
 use App\User;
-use App\chat;
+use App\Chat;
 use Validator;
 
 class ChatsController extends Controller
