@@ -36,4 +36,14 @@ class User extends Authenticatable
     {
         return $this->confirmed;
     }
+
+    /**
+     * Get user messages.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function getUserMessages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }

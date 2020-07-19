@@ -51,6 +51,10 @@ Route::middleware(['auth', 'isConfirmedUser'])->group(function(){
         return view('chat', ['title' => 'Chat | LinearChat']);
     })->name('chat');
 
+    Route::get('/get_messages', 'ChatsController@getAllMessaages')->name('get_messages');
+
+    Route::post('/send_message', 'ChatsController@sendMessage')->name('send_message');
+
     Route::get('/setting', function () {
         return view('forms.edit_user', ['title' => 'Settings | LinearChat']);
     })->name('edit_user');
