@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class chat extends Model
+class Chat extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -20,6 +20,6 @@ class chat extends Model
      */
     public function getMessageOwner()
     {
-    return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }
