@@ -12,12 +12,13 @@ use App\Events\JoinChat;
 use App\User;
 use App\Chat;
 use Validator;
+use Storage;
 
 class ChatsController extends Controller
 {
     public function sendMessage(Request $request)
     {
-        $newChat = new chat;
+        $newChat = new Chat;
 
         $newChat->user_id = Auth::user()->id;
         $newChat->message = $request->content;
@@ -34,7 +35,7 @@ class ChatsController extends Controller
     public function getAllMessaages()
     {
         $response = [];
-        $messages = chat::all();
+        $messages = Chat::all();
  
         foreach ($messages as $message) {
             $user = User::find($message->user_id);
@@ -46,7 +47,7 @@ class ChatsController extends Controller
 
             $response[] = $messageData;
         }
-
+        // dd($response);
         return response()->json(["messages" => $response]);
     }
 }

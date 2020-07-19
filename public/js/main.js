@@ -73,8 +73,8 @@ $(document).ready(function(){
             success: function (response) {
                 $.each(response.messages, function(index, message) {
                     chat_boxes +=  `<div class="white-box message">
-                                        <img src="{{ asset('${message.avatar}') }}" /> ${message.username}
-                                        <h5>${message.sent_at.date}</h5>
+                                        <img src="storage/${message.avatar}" /> ${message.username}
+                                        <h5>${message.sent_at}</h5>
                                         <article>
                                             ${message.content}
                                         </article>
