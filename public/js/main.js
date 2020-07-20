@@ -49,13 +49,12 @@ $(document).ready(function(){
     Pusher.logToConsole = true;
     var pusher = new Pusher('d23cc4c6ff3da4160377', {
         cluster: 'eu',
-        forceTLS: true
+        forceTLS: true,
     });
 
     var channel = pusher.subscribe('join-chat-channel');
 
     channel.bind('join-chat-event', function(data) {
-        alert('koko');
         loadMessages();
     });
 

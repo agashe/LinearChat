@@ -8,11 +8,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
-use App\Events\JoinChat;
 use App\User;
 use App\Chat;
 use Validator;
-use Storage;
+use Pusher;
 
 class ChatsController extends Controller
 {
@@ -24,10 +23,20 @@ class ChatsController extends Controller
         $newChat->message = $request->content;
         $newChat->save();
         
-        // $pusher = new Pusher(env('PUSHER_APP_KEY'), env('PUSHER_APP_SECRET'), env('PUSHER_APP_ID'));
-        // $pusher->trigger('join-chat-channel', 'join-chat-event', ['data' => "lol"]);
+        $options = array(
+            'cluster' => 'eu',
+            'useTLS' => false
+        );
 
-        broadcast(new JoinChat("hey pusher"));
+        $pusher = new Pusher(
+            env('PUSHER_APP_KEY'),
+            env('PUSHER_APP_SECRET'),
+            env('PUSHER_APP_ID'),
+            $options
+        );
+    
+        $data['message'] = "New Message";
+        $pusher->trigger('join-chat-channel', 'join-chat-event', json_encode($data));
 
         return response()->json(["message" => "Success"]);
     }
@@ -35,9 +44,9 @@ class ChatsController extends Controller
     public function getAllMessaages()
     {
         $response = [];
-        $messages = Chat::all();
+        $messages = Chat::latest()->limit(10)->get();
  
-        foreach ($messages as $message) {
+        foreach ($messages->reverse() as $message) {
             $user = User::find($message->user_id);
             
             $messageData['username'] = $user->name;
@@ -47,7 +56,7 @@ class ChatsController extends Controller
 
             $response[] = $messageData;
         }
-        // dd($response);
+
         return response()->json(["messages" => $response]);
     }
 }
