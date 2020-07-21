@@ -7,6 +7,7 @@
 
 /* Global */
 body {
+    overflow: hidden;
     background-color: #f5f5f5;
     background-image: url('../image/background.png');
 }
@@ -72,7 +73,7 @@ body {
 
 /* Chat Board */
 .chat-board {
-
+    height: 100%;
     padding: 15px;
     background-color: #f5f5f5;
     border-right: 5px solid #3C2EF1;
