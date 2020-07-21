@@ -60,6 +60,7 @@ main {
 .white-box-popup {
     width: 350px;
     margin: 15px;
+    z-index: 1000;
     position: fixed;
     right: 0;
 }
