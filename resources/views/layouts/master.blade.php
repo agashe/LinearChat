@@ -12,7 +12,7 @@
     
     {{-- [CSS] --}}
     <link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     {{-- [CSS] --}}
 
