@@ -4,8 +4,7 @@
 
 @section('container')
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 text-center white-box">
+        <div class="col-md-8 offset-md-2 text-center white-box">
             <h1><span class="red">ABOUT</span> <span class="blue">US</span></h1>
             <p class="hint">
                 Do you have some free time? want to try something new,
@@ -19,14 +18,24 @@
                 it out!
             </p>
 
-            <br>
-
-            <div class="row">
+            <div class="row my-3">
+                <div class="col-md-6 text-right pr-0">
+                    <a href="{{ route('login') }}" class="btn btn-xs btn-circle pr-1">
+                        <i class="fa fa-lg fa-facebook"></i>
+                    </a>
+                </div>
+                <div class="col-md-6 text-left pl-0">
+                    <a href="{{ route('login') }}" class="btn btn-xs btn-circle pr-1">
+                        <i class="fa fa-lg fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="row my-3">
                 <div class="col-md-12">
                     <a href="{{ route('login') }}" class="btn">OK, let me try</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-2"></div>
     </div>
 @endsection

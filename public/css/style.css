@@ -173,6 +173,10 @@ footer {
     width: 150px;
 }
 
+.btn-xs {
+    width: 25px;
+}
+
 .btn-circle {
     height: 50px;
     width: 50px;
@@ -180,6 +184,9 @@ footer {
     margin: 10px;
     padding: 7px 0 0 4px;
     font-size: 16pt;
+}
+
+.btn-corner {
     position: fixed;
     right: 0;
     bottom: 0;
