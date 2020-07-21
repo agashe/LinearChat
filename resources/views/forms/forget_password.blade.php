@@ -4,12 +4,9 @@
 
 @section('container')
     <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6 text-center white-box">
+        <div class="col-md-6 offset-md-3 text-center white-box">
             <h1><span class="red">FORGOT</span> <span class="blue">PASSWORD</span></h1>
             <p id="hint">Enter your Email , and you will recieve an email with a new password.</p>
-
-            <br>
             
             @if ($errors->any())
                 <div class="alert alert-danger text-left" role="alert">
@@ -18,13 +15,11 @@
                     @endforeach
                 </div>  
             @endif
-            
-            <br>
 
             <form method="post" action="{{ route('reset_password') }}">
                 {{ csrf_field() }}
 
-                <div class="form-group">
+                <div class="form-group my-4">
                     <input type="email" name="email" class="form-control" id="InputEmail" placeholder="Enter Your Email">
                 </div>
                 
@@ -35,6 +30,5 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-3"></div>
     </div>
 @endsection
