@@ -17,7 +17,7 @@
         </div>
         <div class="col-md-3">
             <a href="{{ route('logout') }}" class="btn btn-circle icon icon-signout" title="Log Out"></a>
-            <a href="{{ route('edit_user') }}" class="btn btn-circle icon icon-cog" title="Setting" style="right:60px;"></a>
+            <a href="{{ route('edit_user') }}" class="btn btn-circle btn-space icon icon-cog" title="Settings"></a>
         </div>
     </div>
 @endsection

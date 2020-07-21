@@ -55,7 +55,7 @@ Route::middleware(['auth', 'isConfirmedUser'])->group(function(){
 
     Route::post('/send_message', 'ChatsController@sendMessage')->name('send_message');
 
-    Route::get('/setting', function () {
+    Route::get('/settings', function () {
         return view('forms.edit_user', ['title' => 'Settings | LinearChat']);
     })->name('edit_user');
 

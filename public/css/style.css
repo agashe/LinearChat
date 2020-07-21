@@ -177,6 +177,10 @@ footer {
     right: 0;
     bottom: 0;
 }
+
+.btn-space {
+    right: 60px;
+}
 /* Button */
 
 /* Alert Message */
