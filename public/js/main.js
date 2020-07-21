@@ -46,7 +46,7 @@ $(document).ready(function(){
     /**
      * Pusher Handler
      */
-    Pusher.logToConsole = true;
+    // Pusher.logToConsole = true;
     var pusher = new Pusher('d23cc4c6ff3da4160377', {
         cluster: 'eu',
         forceTLS: true,
