@@ -46,17 +46,19 @@ $(document).ready(function(){
     /**
      * Pusher Handler
      */
-    // Pusher.logToConsole = true;
-    var pusher = new Pusher('d23cc4c6ff3da4160377', {
-        cluster: 'eu',
-        forceTLS: true,
-    });
+    if (typeof(Pusher) !== 'undefined') {
+        // Pusher.logToConsole = true;
+        var pusher = new Pusher('d23cc4c6ff3da4160377', {
+            cluster: 'eu',
+            forceTLS: true,
+        });
 
-    var channel = pusher.subscribe('join-chat-channel');
+        var channel = pusher.subscribe('join-chat-channel');
 
-    channel.bind('join-chat-event', function(data) {
-        loadMessages();
-    });
+        channel.bind('join-chat-event', function(data) {
+            loadMessages();
+        });
+    }
 
     /* Load the messages on the chat screen. */
     function loadMessages(){

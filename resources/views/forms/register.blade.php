@@ -35,8 +35,7 @@
                     <input type="password" name="password_confirmation" class="form-control" id="InputConfirm" placeholder="Confirm">
                 </div>
                 
-                Or <a href="{{ route('login') }}" class="hint blue">Log In</a>
-                <br><br>
+                <p>Or <a href="{{ route('login') }}" class="hint blue">Log In</a></p>
 
                 <div class="row">
                     <div class="col-md-12">

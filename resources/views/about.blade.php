@@ -20,12 +20,12 @@
 
             <div class="row my-3">
                 <div class="col-md-6 text-right pr-0">
-                    <a href="{{ route('login') }}" class="btn btn-xs btn-circle pr-1">
+                    <a href="https://web.facebook.com/mohamed.yossef.583" class="btn btn-xs btn-circle pr-1">
                         <i class="fa fa-lg fa-facebook"></i>
                     </a>
                 </div>
                 <div class="col-md-6 text-left pl-0">
-                    <a href="{{ route('login') }}" class="btn btn-xs btn-circle pr-1">
+                    <a href="https://github.com/agashe" class="btn btn-xs btn-circle pr-1">
                         <i class="fa fa-lg fa-github"></i>
                     </a>
                 </div>
