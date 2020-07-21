@@ -27,10 +27,11 @@
                 </div>
             </div>
         @endif
-
-        @section('container')
         
-        @show    
+        <main>
+            @section('container')
+            @show    
+        </main>
 
         <footer class="row text-center">
             <div class="col-md-4 offset-md-4 text-center">
