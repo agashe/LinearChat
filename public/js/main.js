@@ -56,6 +56,11 @@ $(document).ready(function(){
         var channel = pusher.subscribe('join-chat-channel');
 
         channel.bind('join-chat-event', function(data) {
+            if (document.hidden) {
+                var title = document.title;
+                document.title = title + ' (New Messages)';
+            }
+
             loadMessages();
         });
     }
@@ -75,7 +80,7 @@ $(document).ready(function(){
                 $.each(response.messages, function(index, message) {
                     chat_boxes +=  `<div class="white-box message">
                                         <img src="storage/${message.avatar}" /> ${message.username}
-                                        <h5>${message.sent_at}</h5>
+                                        <p class="small">${message.sent_at}</p>
                                         <article>
                                             ${message.content}
                                         </article>
@@ -88,9 +93,20 @@ $(document).ready(function(){
         });
     }
 
+    /**
+     * load the messgaes when open the chat screen!
+     */
     if (window.location.href.includes('chat')) {
         loadMessages();
     }
+
+    /**
+     * Update the tab title when active
+     */
+    window.onfocus = function () { 
+        var title = document.title;
+        document.title = title.replace('(New Messages)', '');
+    };
 
     /* Send message */
     $('#send-btn').click(function(){
