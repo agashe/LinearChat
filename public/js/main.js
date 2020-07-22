@@ -65,6 +65,7 @@ $(document).ready(function(){
         });
     }
 
+
     /* Load the messages on the chat screen. */
     function loadMessages(){
         let chat_board = $(document).find(".chat-board-content");
@@ -93,12 +94,14 @@ $(document).ready(function(){
         });
     }
 
+
     /**
      * load the messgaes when open the chat screen!
      */
     if (window.location.href.includes('chat')) {
         loadMessages();
     }
+
 
     /**
      * Update the tab title when active
@@ -108,8 +111,13 @@ $(document).ready(function(){
         document.title = title.replace('(New Messages)', '');
     };
 
+
     /* Send message */
     $('#send-btn').click(function(){
+        if ($('#send-text').val() == '') {
+            return;
+        }
+
         $.ajax({
             url: "/send_message",
             data: {content: $("#send-text").val(), _token: $("meta[name='csrf-token']").attr("content")},

@@ -17,8 +17,11 @@ class ChatsController extends Controller
 {
     public function sendMessage(Request $request)
     {
-        $newChat = new Chat;
+        $this->validate($request, [
+            'message' => 'required'
+        ]);
 
+        $newChat = new Chat;
         $newChat->user_id = Auth::user()->id;
         $newChat->message = $request->content;
         $newChat->save();
