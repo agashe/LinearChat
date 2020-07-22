@@ -4,12 +4,10 @@
 
 @section('container')
     <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6 text-center white-box">
+        <div class="col-md-6 offset-md-3 text-center white-box">
             <h1><span class="red">SETT</span><span class="blue">INGS</span></h1>
             
-            @if ($errors->any())
-                <br>    
+            @if ($errors->any())   
                 <div class="alert alert-danger text-left" role="alert">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -18,8 +16,6 @@
                     </ul>
                 </div>  
             @endif
-            
-            <br>
             
             <form method="post" action="{{ route('update_user') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
@@ -31,7 +27,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name="name" class="form-control" id="InputName" placeholder="Type Your Name" value="{{ Auth::user()->name }}">
+                    <input type="text" name="name" class="form-control" id="InputName" placeholder="Type Your Name" value="{{ Auth::user()->name }}" required>
                 </div>
 
                 <div class="form-group">
@@ -42,9 +38,7 @@
                     <input type="file" name="avatar" class="form-control" id="InputAvatar">
                 </div>
 
-                <br>
-
-                <div class="row">
+                <div class="row mt-4">
                     <div class="col-md-4">
                         <button type="submit" class="btn btn-sm" title="Save Changes">SAVE!</button>
                     </div>
@@ -57,6 +51,5 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-3"></div>
     </div>
 @endsection

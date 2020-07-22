@@ -22,17 +22,17 @@
                 {{ csrf_field() }}
                 
                 <div class="form-group mt-1">
-                    <input type="text" name="name" class="form-control" id="InputName" placeholder="Enter Name" value="{{ old('name') }}">
+                    <input type="text" name="name" class="form-control" id="InputName" placeholder="Enter Name" value="{{ old('name') }}" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" class="form-control" id="InputEmail" placeholder="Enter Email" value="{{ old('email') }}">
+                    <input type="email" name="email" class="form-control" id="InputEmail" placeholder="Enter Email" value="{{ old('email') }}" required>
                 </div>
                 <div class="form-group text-left">
-                    <input type="password" name="password" class="form-control" id="InputPassword" placeholder="Enter Password">
+                    <input type="password" name="password" class="form-control" id="InputPassword" placeholder="Enter Password" required>
                     <span style="display:none;font-weight:bold;" id="pass-strength">Text</span>
                 </div>
                 <div class="form-group">
-                    <input type="password" name="password_confirmation" class="form-control" id="InputConfirm" placeholder="Confirm">
+                    <input type="password" name="password_confirmation" class="form-control" id="InputConfirm" placeholder="Confirm" required>
                 </div>
                 
                 <p>Or <a href="{{ route('login') }}" class="hint blue">Log In</a></p>

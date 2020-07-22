@@ -10,9 +10,11 @@
             
             @if ($errors->any())
                 <div class="alert alert-danger text-left" role="alert">
-                    @foreach ($errors->all() as $error)
-                        {{ $error }}
-                    @endforeach
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>  
             @endif
 
@@ -20,10 +22,10 @@
                 {{ csrf_field() }}
 
                 <div class="form-group mt-3">
-                    <input type="email" name="email" class="form-control" id="InputEmail" placeholder="Enter Your Email">
+                    <input type="email" name="email" class="form-control" id="InputEmail" placeholder="Enter Your Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" name="password" class="form-control" id="InputPassword" placeholder="Enter Your Password">
+                    <input type="password" name="password" class="form-control" id="InputPassword" placeholder="Enter Your Password" required>
                 </div>
 
                 <div class="text-center">

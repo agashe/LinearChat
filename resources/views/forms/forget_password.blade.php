@@ -20,7 +20,7 @@
                 {{ csrf_field() }}
 
                 <div class="form-group my-4">
-                    <input type="email" name="email" class="form-control" id="InputEmail" placeholder="Enter Your Email">
+                    <input type="email" name="email" class="form-control" id="InputEmail" placeholder="Enter Your Email" required>
                 </div>
                 
                 <div class="row">
