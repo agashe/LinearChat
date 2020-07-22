@@ -5,7 +5,7 @@
 @section('container')
     <div class="row">
         <div class="col-md-6 offset-md-3 chat-board">
-            <div class="chat-board-content">
+            <div class="chat-board-content p-3">
                 <!-- Messages -->
             </div>
 

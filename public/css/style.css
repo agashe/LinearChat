@@ -85,19 +85,20 @@ main {
     overflow: hidden;
 }
 .chat-board .chat-board-content{
-    height: 520px;
+    height: 540px;
     width: 100%;
     overflow-y: scroll;
 }
 
 .message {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .message-box {
     height: 50px;
     width: 100%;
-    margin-top: 35px;
+    margin-top: 15px;
     padding: 5px;
     border-top: 5px solid #EA1818;
 }
