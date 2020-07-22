@@ -52,6 +52,7 @@ class ChatsController extends Controller
         foreach ($messages->reverse() as $message) {
             $user = User::find($message->user_id);
             
+            $messageData['user_id']       = $user->id;
             $messageData['username'] = $user->name;
             $messageData['avatar']   = $user->image;
             $messageData['sent_at']  = $message->created_at;
@@ -60,6 +61,6 @@ class ChatsController extends Controller
             $response[] = $messageData;
         }
 
-        return response()->json(["messages" => $response]);
+        return response()->json(["messages" => $response, "user_id" => Auth::user()->id]);
     }
 }

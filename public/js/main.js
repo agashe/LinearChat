@@ -69,6 +69,7 @@ $(document).ready(function(){
     /* Load the messages on the chat screen. */
     function loadMessages(){
         let chat_board = $(document).find(".chat-board-content");
+        let is_user_message = "";
         let chat_boxes = "";
 
         chat_board.html("");
@@ -79,15 +80,21 @@ $(document).ready(function(){
             dataType: "json",
             success: function (response) {
                 $.each(response.messages, function(index, message) {
-                    chat_boxes +=  `<div class="white-box message">
-                                        <img src="storage/${message.avatar}" /> ${message.username}
+                    if (message.user_id != response.user_id) {
+                        is_user_message = 'white-box-red-border';
+                    } else {
+                        is_user_message = '';
+                    }
+
+                    chat_boxes +=  `<div class="white-box message ${is_user_message}">
+                                        <img src="storage/${message.avatar}" /> ${message.username + ((message.user_id == response.user_id)?' (ME)':'')}
                                         <p class="small mb-0">${message.sent_at.replace('T', ' ').replace('.000000Z', '')}</p>
                                         <article>
                                             ${message.content}
                                         </article>
                                     </div>`;
                 });
-  
+
                 chat_board.append(chat_boxes);
                 chat_board.scrollTop(chat_board[0].scrollHeight);
             },
