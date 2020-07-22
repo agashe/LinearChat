@@ -81,7 +81,7 @@ $(document).ready(function(){
                 $.each(response.messages, function(index, message) {
                     chat_boxes +=  `<div class="white-box message">
                                         <img src="storage/${message.avatar}" /> ${message.username}
-                                        <p class="small">${message.sent_at}</p>
+                                        <p class="small mb-0">${message.sent_at.replace('T', ' ').replace('.000000Z', '')}</p>
                                         <article>
                                             ${message.content}
                                         </article>
