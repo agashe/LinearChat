@@ -6,6 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- [SEO] --}}
+    @if (isset($noSEO) && $noSEO == true)
+        <meta name="robots" content="noindex">
+    @else
+        <meta name="description" content="LinearChat , the new era for online chating">
+        <meta name="keywords" content="LinearChat, Chat, Online, linearchat, chat, messages">
+    @endif
+    {{-- [SEO] --}}
+
     {{-- [Favicon] --}}
     <link rel="shortcut icon" href="{{ asset('image/logo.png') }}" type="image/png">
     {{-- [Favicon] --}}

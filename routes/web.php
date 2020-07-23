@@ -36,7 +36,7 @@ Route::middleware(['guest'])->group(function(){
     Route::post('/check_user', 'UserController@login')->name('check_user');
 
     Route::get('/forget-password', function () {
-        return view('forms.forget_password', ['title' => 'Forget Password | LinearChat']);
+        return view('forms.forget_password', ['title' => 'Forget Password | LinearChat', 'noSEO' => true]);
     })->name('forget_password');
 
     Route::post('/reset_password', 'UserController@resetPassword')->name('reset_password'); 
@@ -48,7 +48,7 @@ Route::middleware(['guest'])->group(function(){
 /* Authintecated User */
 Route::middleware(['auth', 'isConfirmedUser'])->group(function(){
     Route::get('/chat', function () {
-        return view('chat', ['title' => 'Chat | LinearChat']);
+        return view('chat', ['title' => 'Chat | LinearChat', 'noSEO' => true]);
     })->name('chat');
 
     Route::get('/get_messages/{limit}', 'ChatsController@getMessages')->name('get_messages');
@@ -56,13 +56,13 @@ Route::middleware(['auth', 'isConfirmedUser'])->group(function(){
     Route::post('/send_message', 'ChatsController@sendMessage')->name('send_message');
 
     Route::get('/settings', function () {
-        return view('forms.edit_user', ['title' => 'Settings | LinearChat']);
+        return view('forms.edit_user', ['title' => 'Settings | LinearChat', 'noSEO' => true]);
     })->name('edit_user');
 
     Route::post('/update_user', 'UserController@update')->name('update_user');
 
     Route::get('/update-password', function () {
-        return view('forms.update_password', ['title' => 'Update Password | LinearChat']);
+        return view('forms.update_password', ['title' => 'Update Password | LinearChat', 'noSEO' => true]);
     })->name('update_password');
 
     Route::post('/save-password', 'UserController@updatePassword')->name('save_password');
