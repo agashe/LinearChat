@@ -88,7 +88,7 @@ $(document).ready(function(){
                     }
 
                     chat_boxes +=  `<div class="white-box message ${is_user_message}">
-                                        <img src="storage/${message.avatar}" /> ${message.username + ((message.user_id == response.user_id)?' (ME)':'')}
+                                        <img src="storage/${message.avatar}" /> <span class="font-weight-bold">${message.username + ((message.user_id == response.user_id)?' (ME)':'')}</span>
                                         <p class="small mb-0">${message.sent_at.replace('T', ' ').replace('.000000Z', '')}</p>
                                         <article>
                                             ${message.content}
