@@ -10,8 +10,8 @@
             </div>
 
             <div class="message-box">
-                <input type="text" id="send-text" placeholder="Write Something...">
-                <i class="fa fa-send-o" id="send-btn" title="SEND!"></i>
+                <textarea id="send-text" placeholder="Write Something..."></textarea>
+                <i class="fa fa-send-o pb-5" id="send-btn" title="SEND!"></i>
             </div>
         </div>
         <div class="col-md-3">

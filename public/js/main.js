@@ -150,5 +150,6 @@ $(document).ready(function(){
         });
 
         loadMessages($('.message').length);
+        $('#send-text').val('');
     });
 });

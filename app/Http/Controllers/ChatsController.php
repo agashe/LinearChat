@@ -23,7 +23,7 @@ class ChatsController extends Controller
 
         $newChat = new Chat;
         $newChat->user_id = Auth::user()->id;
-        $newChat->message = $request->message;
+        $newChat->message = nl2br($request->message);
         $newChat->save();
         
         $options = array(
