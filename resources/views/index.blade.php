@@ -4,16 +4,13 @@
 
 @section('container')
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 text-center">
+        <div class="col-md-8 offset-md-2 text-center">
             <div class="white-box">
                 <h1 class="logo">
                     <span class="red">LINEAR</span><span class="blue">CHAT</span>
                 </h1>
 
-                <br>
-                <p class="hint">The best solution to chat, just jungle in mongle :)</p>
-                <br>
+                <p class="hint py-4">The best solution to chat, just jungle in mongle :)</p>
 
                 <div class="row">
                     <div class="col-md-6">
@@ -25,6 +22,5 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2"></div>
     </div>
 @endsection
