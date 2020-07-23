@@ -23,7 +23,7 @@ class ChatsController extends Controller
 
         $newChat = new Chat;
         $newChat->user_id = Auth::user()->id;
-        $newChat->message = $request->content;
+        $newChat->message = $request->message;
         $newChat->save();
         
         $options = array(
@@ -44,10 +44,10 @@ class ChatsController extends Controller
         return response()->json(["message" => "Success"]);
     }
 
-    public function getAllMessaages()
+    public function getMessages($limit)
     {
         $response = [];
-        $messages = Chat::latest()->limit(10)->get();
+        $messages = Chat::latest()->limit($limit)->get();
  
         foreach ($messages->reverse() as $message) {
             $user = User::find($message->user_id);

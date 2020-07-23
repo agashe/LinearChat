@@ -51,7 +51,7 @@ Route::middleware(['auth', 'isConfirmedUser'])->group(function(){
         return view('chat', ['title' => 'Chat | LinearChat']);
     })->name('chat');
 
-    Route::get('/get_messages', 'ChatsController@getAllMessaages')->name('get_messages');
+    Route::get('/get_messages/{limit}', 'ChatsController@getMessages')->name('get_messages');
 
     Route::post('/send_message', 'ChatsController@sendMessage')->name('send_message');
 

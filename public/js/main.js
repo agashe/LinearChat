@@ -61,24 +61,25 @@ $(document).ready(function(){
                 document.title = title + ' (New Messages)';
             }
 
-            loadMessages();
+            loadMessages($('.message').length);
         });
     }
 
 
     /* Load the messages on the chat screen. */
-    function loadMessages(){
+    function loadMessages(limit = 10, scroll_to_top = false){
         let chat_board = $(document).find(".chat-board-content");
         let is_user_message = "";
         let chat_boxes = "";
-
-        chat_board.html("");
-    
+        
         $.ajax({
-            url: "/get_messages",
+            url: "/get_messages/" + limit,
             method: "GET",
             dataType: "json",
             success: function (response) {
+                chat_board.html("");
+                chat_boxes +=  '<p class="text-center">Load More ... </p>';
+                
                 $.each(response.messages, function(index, message) {
                     if (message.user_id != response.user_id) {
                         is_user_message = 'white-box-red-border';
@@ -96,7 +97,11 @@ $(document).ready(function(){
                 });
 
                 chat_board.append(chat_boxes);
-                chat_board.scrollTop(chat_board[0].scrollHeight);
+                if (scroll_to_top) {
+                    chat_board.scrollTop(50);
+                } else {
+                    chat_board.scrollTop(chat_board[0].scrollHeight);
+                }
             },
         });
     }
@@ -119,6 +124,18 @@ $(document).ready(function(){
     };
 
 
+    /**
+     * load messages messgaes when the scroll reach its limits!!
+     */
+    $('.chat-board-content').scroll(function(){
+        if ($('.chat-board-content').scrollTop() == 0) {
+            // update the number of messages to fetch
+            var limit = $('.message').length + 10;
+            loadMessages(limit, true);
+        }
+    });
+
+
     /* Send message */
     $('#send-btn').click(function(){
         if ($('#send-text').val() == '') {
@@ -127,11 +144,11 @@ $(document).ready(function(){
 
         $.ajax({
             url: "/send_message",
-            data: {content: $("#send-text").val(), _token: $("meta[name='csrf-token']").attr("content")},
+            data: {message: $("#send-text").val(), _token: $("meta[name='csrf-token']").attr("content")},
             method: "POST",
             dataType: "json"
         });
 
-        loadMessages();
+        loadMessages($('.message').length);
     });
 });
