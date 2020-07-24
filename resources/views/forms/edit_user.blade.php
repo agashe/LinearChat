@@ -20,11 +20,15 @@
             <form method="post" action="{{ route('update_user') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 
-                <div class="form-group">
+                <div class="form-group mb-0">
                     <label for="InputAvatar">
                         <img src="{{ url('storage/'.Auth::user()->image) }}" class="settings-img" />
                     </label>
                 </div>
+                
+                @if (Auth::user()->image != 'avatar/avatar.jpg')
+                    <a href="{{ route('remove_avatar') }}" class="btn btn-hint mx-0 mb-3 mt-0 p-0" title="Remove this avatar image!">Remove</a>
+                @endif
 
                 <div class="form-group">
                     <input type="text" name="name" class="form-control" id="InputName" placeholder="Type Your Name" value="{{ Auth::user()->name }}" required>

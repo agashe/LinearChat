@@ -149,6 +149,16 @@ class UserController extends Controller
         return redirect()->route('edit_user')->with('success', 'Your password has been updated successfully.');
     }
 
+    public function removeAvatar()
+    {
+        $user = Auth::user();
+        unlink('storage/'.$user->image);
+        $user->image = 'avatar/avatar.jpg';
+        $user->save();
+
+        return redirect()->back()->with('success', "Avatar removed successfully");
+    }
+
     public function logout()
     {
         $userName = Auth::user()->name;

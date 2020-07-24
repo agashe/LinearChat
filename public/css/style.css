@@ -172,6 +172,7 @@ footer {
     border: 2px solid #3C2EF1;
     border-radius: 20px;
     box-shadow: 2px 2px #000;
+    cursor: pointer;
 }
 .btn:hover {
     color: #EA1818;
@@ -186,6 +187,12 @@ footer {
     width: 25px;
 }
 
+.btn-hint {
+    height: 25px;
+    width: 100px;
+    font-size: 11pt;
+}
+
 .btn-circle {
     height: 50px;
     width: 50px;
@@ -193,6 +200,13 @@ footer {
     margin: 10px;
     padding: 7px 0 0 4px;
     font-size: 16pt;
+}
+
+.btn-circle-xs {
+    height: 25px;
+    width: 25px;
+    padding: 0;
+    font-size: 11pt;
 }
 
 .btn-corner {

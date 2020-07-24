@@ -60,6 +60,7 @@ Route::middleware(['auth', 'isConfirmedUser'])->group(function(){
     })->name('edit_user');
 
     Route::post('/update_user', 'UserController@update')->name('update_user');
+    Route::get('/remove_avatar', 'UserController@removeAvatar')->name('remove_avatar');
 
     Route::get('/update-password', function () {
         return view('forms.update_password', ['title' => 'Update Password | LinearChat', 'noSEO' => true]);
